@@ -11,8 +11,10 @@ O sistema deve ter 4 divisões:
 2. mostrar menu com opções de saque, depósito e mostrar o extrato
 3. Receber dados do depósito e mandar para a classe cliente
 4. Receber dados do saque e mandar para a classe cliente
-5. Receber informações do histórico e mostrar o extrato
-
+5. Receber informações do histórico e mostrar o extrato  
+---
+<br>
+<br>
 
 
 ## A classe Cliente deve fazer
@@ -44,6 +46,8 @@ o saque chama a função de adicionar algo ao hitórico
 **extrato:**  
 chama a função que retorna os dados de cada transação  
 envia os dados para a tela  
+
+---
 <br>
 <br>
 
@@ -56,8 +60,9 @@ nome do usuário
 
 função para pegar nome do usuário no banco de dados
 <br>
-funçâo para alterar o valor do saldo e registrar mudança no banco de dados
-<br>
+funçâo para alterar o valor do saldo e registrar mudança no banco de dados  
+
+---
 <br>
 <br>
 
@@ -67,12 +72,12 @@ funçâo para alterar o valor do saldo e registrar mudança no banco de dados
 
 **cadastro:**  
 criar tabela e guardar nome, cpf, numero, email e idade do usuário e senha  
-cria uma tabela para o extrato do usuário
+cria uma tabela para o extrato do usuário  
 <br>
 
 **login:**  
 receber cpf e senha e verificar os dados no banco de dados  
-retornar true ou false se existir ou não
+retornar true ou false se existir ou não  
 <br>
 
 **depósito:**  
