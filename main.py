@@ -1,87 +1,228 @@
-import sqlite3
-from kivy.app import App
-from kivy.lang import Builder
-from kivy.uix.floatlayout import FloatLayout
-from kivy.uix.screenmanager import ScreenManager, Screen
-from kivy.uix.label import Label
-from kivy.uix.button import Button
-from kivy.uix.spinner import Spinner, SpinnerOption
-from kivy.core.window import Window
-import dados
+
+class Interface:
+    pass
+#1. criar usuário ou fazer login e enviar ou pesquisar as informações no banco de dados
+#2. mostrar menu com opções de saque, depósito e mostrar o extrato
+#3. Receber dados do depósito e mandar para a classe cliente
+#4. Receber dados do saque e mandar para a classe cliente
+#5. Receber informações do histórico e mostrar o extrato
 
 
-class Banco_de_Dados:
-    def __init__(self):
-        self.conexao = sqlite3.connect('Supermercado.db')
-        self.cursor = self.conexao.cursor()
 
-    def Criar_tabelas(self):
+class Cliente:
+    def __init__(self) -> None:
         pass
 
-    def Cadastro_db(self, nome, cpf, numero, email, departamento, função, senha):
-        nome_db = nome
+    def cadastro(self):
+        pass
+
+    def login(self):
+        pass
+
+    def deposito(self):
+        pass
+
+    def saque(self):
+        pass
+
+    def extrato(self):
+        pass
 
 
-class Supermercado(App):
-    def build(self):
-        Window.size = (1280, 720)
-        sm = ScreenManager()
-        sm.add_widget(Screen_Login(name='login'))
-        sm.add_widget(Screen_Cadastro(name='cadastro'))
-        return Builder.load_file('Tela.kv')
 
+class Conta:
+    def __init__(self, saldo, nome):
+        self.saldo = saldo
+        self.nome = self.nome_usuario()
+        self.banco = Banco_de_dados()
 
-class Screen_Login(Screen):        
-    def get_input_login(self, cpf, senha, departamento):
-        pass   
-
-
-class Screen_Cadastro(Screen, Banco_de_Dados):
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        banco = Banco_de_Dados()
+    def nome_usuario(self):
+        nome = self.banco.buscar_nome()
+        return nome
     
-    def informacoes_de_cadastro(self, nome, cpf, ddd, numero, email, departamento, função, senha, ConfirmSenha):
-        Verific = [" ", " ", " ", " ", " ", " ", " ", " "]
-        Verific[0], nome_db = dados.Dados_de_cadastro.VerificNome(nome)
-        if Verific[0] != ' ': self.ids.nome_cad_error.text = Verific[0]
-        Verific[1], cpf_db = dados.Dados_de_cadastro.VerificCPF(cpf)
-        '''if Verific[1] != ' ': self.ids.cpf_cad_error.text = Verific[1]
-        Verific[2], ddd_db, numero_db = dados.Dados_de_cadastro.VerificDDDNumero(ddd, numero)
-        if Verific[2] != ' ': self.ids.DDDnumero_cad_error.text = Verific[2]
-        Verific[3], email_db = dados.Dados_de_cadastro.VerificEmail(email)
-        if Verific[3] != ' ': self.ids.email_cad_error.text = Verific[3]
-        Verific[4], departamento_db = dados.Dados_de_cadastro.VerificDepartamento(departamento)
-        if Verific[4] != ' ': self.ids.departamento_cad_error.text = Verific[4]
-        Verific[5], função_db = dados.Dados_de_cadastro.VerificCargo(função)
-        if Verific[5] != ' ': self.ids.cargo_cad_error.text = Verific[5]'''
-        '''Verific[7], senha_db = dados.Dados_de_cadastro.VerificSenha(senha)
-        if Verific[7] != 'ok': self.ids.senha_cad_error.text = Verific[7]
-        Verific[8], ConfirmSenha_db = dados.Dados_de_cadastro.VerificConfirmSenha(ConfirmSenha)
-        if Verific[8] != 'ok': self.ids.ConfirmSenha_cad_error.text = Verific[8]'''
-
-        for verific in Verific:
-            if verific != 'Erro':
-                pass
-
-    
-
-    def spinner_funcao(self, departamento, value):
-        if value == 'Entrega':
-            self.ids.cargo_cad.values = ('Entregador',)
-        elif value == 'Cozinha':
-            self.ids.cargo_cad.values = ('Açougueiro', 'Padeiro', 'Peixero', 'Cozinheiro', 'Sommelier de vinhos')
-        elif value == 'Atendimento':
-            self.ids.cargo_cad.values = ('Operador de caixa', 'Empacotador')
-        elif value == 'Estoque':
-            self.ids.cargo_cad.values = ('Repositor', 'Estoquista')
-        elif value == 'Administração':
-            self.ids.cargo_cad.values = ('Gerente', 'Auxiliar administrativo')
-        elif value == 'Auxiliar':
-            self.ids.cargo_cad.values = ('Segurança,', 'Limpeza')
-        else:
-            self.ids.cargo_cad.values = ()
+    def saldo(self):
+        pass
 
 
-banco = Banco_de_Dados()
-Supermercado().run()
+class Banco_de_dados:
+
+    def cadastro(self): 
+        pass
+
+    def login(self):
+        pass
+
+    def deposito(self):
+        pass
+
+    def saque(self):
+        pass
+
+    def extrato(self):
+        pass
+        import sqlite3
+from sqlite3 import Error
+
+def connect_db():
+    try:
+        conn = sqlite3.connect('banco.db')
+        return conn
+    except Error as e:
+        print(e)
+        return None
+
+def criar_tabelas():
+    conn = connect_db()
+    if conn:
+        cursor = conn.cursor()
+        cursor.execute('''
+        CREATE TABLE IF NOT EXISTS clientes (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            nome TEXT NOT NULL,
+            sobrenome TEXT NOT NULL,
+            cpf TEXT UNIQUE NOT NULL,
+            email TEXT NOT NULL
+        )
+        ''')
+        cursor.execute('''
+        CREATE TABLE IF NOT EXISTS contas (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            cliente_id INTEGER NOT NULL,
+            saldo REAL NOT NULL DEFAULT 0,
+            FOREIGN KEY (cliente_id) REFERENCES clientes (id)
+        )
+        ''')
+        cursor.execute('''
+        CREATE TABLE IF NOT EXISTS transacoes (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            conta_id INTEGER NOT NULL,
+            tipo TEXT NOT NULL,
+            valor REAL NOT NULL,
+            data TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            FOREIGN KEY (conta_id) REFERENCES contas (id)
+        )
+        ''')
+        conn.commit()
+        conn.close()
+
+def adicionar_cliente(nome, sobrenome, cpf, email):
+    if len(cpf) != 14:  # Verificação simplificada do CPF
+        return 'Erro: CPF inválido'
+    conn = connect_db()
+    if conn:
+        cursor = conn.cursor()
+        
+        # Verificar se o CPF já existe
+        cursor.execute('''
+        SELECT COUNT(*) FROM clientes WHERE cpf = ?
+        ''', (cpf,))
+        count = cursor.fetchone()[0]
+        
+        if count > 0:
+            conn.close()
+            return 'Erro: CPF já cadastrado'
+        
+        cursor.execute('''
+        INSERT INTO clientes (nome, sobrenome, cpf, email)
+        VALUES (?, ?, ?, ?)
+        ''', (nome, sobrenome, cpf, email))
+        conn.commit()
+        conn.close()
+        return 'Cliente adicionado com sucesso'
+    return 'Erro ao conectar ao banco de dados'
+
+def criar_conta(cliente_id):
+    conn = connect_db()
+    if conn:
+        cursor = conn.cursor()
+        cursor.execute('''
+        INSERT INTO contas (cliente_id)
+        VALUES (?)
+        ''', (cliente_id,))
+        conn.commit()
+        conn.close()
+        return 'Conta criada com sucesso'
+    return 'Erro ao conectar ao banco de dados'
+
+def realizar_transacao(conta_id, tipo, valor):
+    if valor <= 0:
+        return 'Erro: valor de transação inválido'
+    conn = connect_db()
+    if conn:
+        cursor = conn.cursor()
+        cursor.execute('''
+        INSERT INTO transacoes (conta_id, tipo, valor)
+        VALUES (?, ?, ?)
+        ''', (conta_id, tipo, valor))
+        
+        if tipo == 'deposito':
+            cursor.execute('''
+            UPDATE contas
+            SET saldo = saldo + ?
+            WHERE id = ?
+            ''', (valor, conta_id))
+        elif tipo == 'saque':
+            # Verificar se há saldo suficiente antes de permitir o saque
+            cursor.execute('''
+            SELECT saldo FROM contas WHERE id = ?
+            ''', (conta_id,))
+            saldo_atual = cursor.fetchone()[0]
+            if saldo_atual >= valor:
+                cursor.execute('''
+                UPDATE contas
+                SET saldo = saldo - ?
+                WHERE id = ?
+                ''', (valor, conta_id))
+            else:
+                conn.close()
+                return 'Erro: saldo insuficiente'
+        
+        conn.commit()
+        conn.close()
+        return 'Transação realizada com sucesso'
+    return 'Erro ao conectar ao banco de dados'
+
+def consultar_saldo(conta_id):
+    conn = connect_db()
+    if conn:
+        cursor = conn.cursor()
+        cursor.execute('''
+        SELECT saldo
+        FROM contas
+        WHERE id = ?
+        ''', (conta_id,))
+        saldo = cursor.fetchone()[0]
+        conn.close()
+        return saldo
+    return 'Erro ao conectar ao banco de dados'
+
+def listar_transacoes(conta_id):
+    conn = connect_db()
+    if conn:
+        cursor = conn.cursor()
+        cursor.execute('''
+        SELECT * FROM transacoes
+        WHERE conta_id = ?
+        ORDER BY data DESC
+        ''', (conta_id,))
+        transacoes = cursor.fetchall()
+        conn.close()
+        return transacoes
+    return 'Erro ao conectar ao banco de dados'
+
+# Criar tabelas ao iniciar
+criar_tabelas()
+
+# Exemplo de uso:
+resultado = adicionar_cliente('João', 'Silva', '123.456.789-00', 'joao.silva@example.com')
+print(resultado)  # Cliente adicionado com sucesso ou Erro: CPF já cadastrado
+
+if resultado == 'Cliente adicionado com sucesso':
+    criar_conta(1)
+    realizar_transacao(1, 'deposito', 100.0)
+    saldo = consultar_saldo(1)
+    print(f'Saldo atual: {saldo}')
+    realizar_transacao(1, 'saque', 50.0)
+    transacoes = listar_transacoes(1)
+    for transacao in transacoes:
+        print(transacao)
