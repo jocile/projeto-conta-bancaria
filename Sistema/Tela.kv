@@ -1,0 +1,799 @@
+ScreenManager:
+    id: screen_manager
+    Screen_Login:
+        name: "login"
+    Screen_Cadastro:
+        name: "cadastro"
+    Screen_Menu:
+        name: "menu"
+    Screen_Deposito:
+        name: "deposito"
+    Screen_Saque:
+        name: "saque"
+    Screen_Extrato:
+        name: "extrato"
+    Screen_Perfil:
+        name: "perfil"
+#
+<SpinnerOption>:
+    size_hint_y: None
+    text_size: self.size
+    valign: 'center'
+    halign: 'center'
+    color: 0, 0, 0, 1
+    background_normal: ''
+#
+<Screen_Login>:
+    name: "login"
+    FloatLayout:
+        canvas.before:
+            Color:
+                rgba: 0.8, 0.8, 0.8, 1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        #
+        Label:
+            text: "FAÇA SEU LOGIN"
+            font_size: 30
+            pos_hint: {'center_x':.5, 'center_y':.9}
+            size_hint: None, None
+            bold: True
+            color: 0, 0, 0, 1
+        #
+        Label:
+            id: verificacao_log_error
+            text: ""
+            font_size: 18
+            halign: 'center'
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'center_x':.5, 'center_y':.85}
+            color: 0.5, 0, 0, 1
+        #
+        Label:
+            text: "Digite seu CPF"
+            font_size: 20
+            pos_hint: {'center_x':.5, 'center_y':.7}
+            color: 0, 0, 0, 1
+        #
+        TextInput:
+            id: cpf_log
+            hint_text: 'digite somente os números'
+            size_hint: None, None
+            size: 200, 40
+            pos_hint: {'center_x': 0.5, 'center_y': 0.63}
+        #
+        Label:
+            id: cpf_log_error
+            text: ""
+            font_size: 15
+            pos_hint: {'center_x':.48, 'center_y':.58}
+            color: 0.5, 0, 0, 1
+        #
+        Label:
+            text: "Digite sua senha"
+            font_size: 20
+            pos_hint: {'center_x':.5, 'center_y':.5}
+            color: 0, 0, 0, 1
+        #
+        TextInput:
+            id: senha_log
+            size_hint: None, None
+            size: 200, 40
+            pos_hint: {'center_x': 0.5, 'center_y': 0.43}
+        #
+        Label:
+            id: senha_log_error
+            text: ""
+            font_size: 15
+            pos_hint: {'center_x':.48, 'center_y':.38}
+            color: 0.5, 0, 0, 1
+        #
+        Button:
+            text: "Entrar"
+            size_hint: None, None
+            size: 200, 40
+            font_size: 20
+            pos_hint: {'center_x': 0.5, 'center_y': 0.25}
+            background_color: 0.2, 0.8, 0.2, 1
+            on_press: root.manager.transition.direction = 'left'
+            on_release: root.informacoes_de_login(cpf_log.text, senha_log.text)
+        #
+        Button:
+            text: "Cadastro"
+            size_hint: None, None
+            size: 200, 40
+            font_size: 20
+            pos_hint: {'center_x': 0.5, 'center_y': 0.15}
+            background_color: 0.2, 0.2, 0.8, 1
+            on_press: root.manager.transition.direction = 'right'
+            on_release: app.root.current = 'cadastro'
+        #
+#
+<Screen_Cadastro>:
+    name: "cadastro"
+    FloatLayout:
+        canvas.before:
+            Color:
+                rgba: 0.8, 0.8, 0.8, 1
+            Rectangle:
+                size: self.size
+        #
+        Label:
+            text: "CADASTRO"
+            font_size: 30
+            pos_hint: {'center_x':.5, 'center_y':.9}
+            size_hint: None, None
+            bold: True
+            color: 0, 0, 0, 1
+        #
+        Label:
+            text: "Nome:"
+            font_size: 20
+            halign: 'left'
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x':.15, 'y':.78 + 0.01}
+            color: 0, 0, 0, 1
+        #
+        TextInput:
+            id: nome_cad
+            size_hint: None, None
+            size: 250, 40
+            halign: 'left'
+            pos_hint: {'x':.15, 'y':.72 + 0.01}
+            color: 0, 0, 0, 1
+        #
+        Label:
+            id: nome_cad_error
+            text: ""
+            font_size: 15
+            halign: 'left'
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x':.15, 'y':.69 + 0.01}
+            color: 0.5, 0, 0, 1
+        #
+        Label:
+            text: "CPF:"
+            font_size: 20
+            halign: 'left'
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x':.15, 'y':.63 + 0.01}
+            color: 0, 0, 0, 1
+        #
+        TextInput:
+            id: cpf_cad
+            hint_text: 'digite somente os números'
+            size_hint: None, None
+            size: 250, 40
+            halign: 'left'
+            pos_hint: {'x':.15, 'y':.57 + 0.01}
+            color: 0, 0, 0, 1
+        #
+        Label:
+            id: cpf_cad_error
+            text: ""
+            font_size: 15
+            halign: 'left'
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x':.15, 'y':.54 + 0.01}
+            color: 0.5, 0, 0, 1
+        #
+        Label:
+            text: "DDD/Celular:"
+            font_size: 20
+            halign: 'left'
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x':.15, 'y':.48 + 0.01}
+            color: 0, 0, 0, 1
+        #
+        BoxLayout:
+            orientation: "horizontal"
+            size_hint: None, None
+            size: self.minimum_size
+            halign: 'left'
+            pos_hint: {'x': 0.15, 'y':.42 + 0.01}
+            spacing: 5
+            #
+            TextInput:
+                id: ddd_cad
+                size_hint: None, None
+                size: 50, 40
+                color: 0, 0, 0, 1
+                size_hint_x: None
+                width: self.size[0]
+                text: ""
+                font_color: 0.6, 0.6, 0.6, 1
+            #
+            TextInput:
+                id: numero_cad
+                size_hint: None, None
+                size: 120, 40
+                halign: 'left'
+                color: 0, 0, 0, 1
+                size_hint_x: None
+                width: self.size[0]
+                text: ""
+                font_color: 0.6, 0.6, 0.6, 1
+        #
+        Label:
+            id: DDDnumero_cad_error
+            text: ""
+            font_size: 15
+            halign: 'left'
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x':.15, 'y':.39 + 0.01}
+            color: 0.5, 0, 0, 1
+        #
+        Label:
+            text: "E-mail:"
+            font_size: 20
+            halign: 'left'
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x':.15, 'y':.33 + 0.01}
+            color: 0, 0, 0, 1
+        #
+        TextInput:
+            id: email_cad
+            size_hint: None, None
+            size: 250, 40
+            halign: 'left'
+            pos_hint: {'x':.15, 'y':.27 + 0.01}
+            color: 0, 0, 0, 1
+        #
+        Label:
+            id: email_cad_error
+            text: ""
+            font_size: 15
+            halign: 'left'
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x':.15, 'y':.24 + 0.01}
+            color: 0.5, 0, 0, 1
+        #
+        Label:
+            text: "Data de Nascimento:"
+            font_size: 20
+            halign: 'left'
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x':.15, 'y':.18 + 0.01}
+            color: 0, 0, 0, 1
+        #
+        TextInput:
+            id: data_cad
+            hint_text: 'dia/mês/ano'
+            size_hint: None, None
+            size: 250, 40
+            halign: 'left'
+            pos_hint: {'x':.15, 'y':.12 + 0.01}
+            color: 0, 0, 0, 1
+        #
+        Label:
+            id: data_cad_error
+            text: ""
+            font_size: 15
+            halign: 'left'
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x':.15, 'y':.09 + 0.01}
+            color: 0.5, 0, 0, 1
+        #
+        Label:
+            text: "CEP:"
+            font_size: 20
+            halign: 'left'
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x':.55, 'y':.79}
+            color: 0, 0, 0, 1
+        #
+        TextInput:
+            id: cep_cad
+            size_hint: None, None
+            size: 250, 40
+            halign: 'left'
+            pos_hint: {'x':.55, 'y':.73}
+            color: 0, 0, 0, 1
+        #
+        Label:
+            id: cep_cad_error
+            text: ""
+            font_size: 15
+            halign: 'left'
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x':.55, 'y':.70}
+            color: 0.5, 0, 0, 1
+        #
+        Label:
+            text: "Rua:"
+            font_size: 20
+            halign: 'left'
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x':.55, 'y':.64}
+            color: 0, 0, 0, 1
+        #
+        TextInput:
+            id: rua_cad
+            text: "Rua "
+            size_hint: None, None
+            size: 250, 40
+            halign: 'left'
+            pos_hint: {'x':.55, 'y':.58}
+            color: 0, 0, 0, 1
+        #
+        Label:
+            id: rua_cad_error
+            text: ""
+            font_size: 15
+            halign: 'left'
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x':.55, 'y':.55}
+            color: 0.5, 0, 0, 1
+        #
+        Label:
+            text: "Numero da casa:"
+            font_size: 20
+            halign: 'left'
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x':.55, 'y':.49}
+            color: 0, 0, 0, 1
+        #
+        TextInput:
+            id: Ncasa_cad
+            size_hint: None, None
+            size: 250, 40
+            halign: 'left'
+            pos_hint: {'x':.55, 'y':.43}
+            color: 0, 0, 0, 1
+        #
+        Label:
+            id: Ncasa_cad_error
+            text: ""
+            font_size: 15
+            halign: 'left'
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x':.55, 'y':.40}
+            color: 0.5, 0, 0, 1
+        #
+        Label:
+            text: "Senha:"
+            font_size: 20
+            halign: 'left'
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x':.55, 'y':.34}
+            color: 0, 0, 0, 1
+        #
+        TextInput:
+            id: senha_cad
+            size_hint: None, None
+            size: 250, 40
+            halign: 'left'
+            pos_hint: {'x':.55, 'y':.28}
+            color: 0, 0, 0, 1
+        #
+        Label:
+            id: senha_cad_error
+            text: ""
+            font_size: 15
+            halign: 'left'
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x':.55, 'y':.25}
+            color: 0.5, 0, 0, 1
+        #
+        Label:
+            text: "Confirme a senha:"
+            font_size: 20
+            halign: 'left'
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x':.55, 'y':.19}
+            color: 0, 0, 0, 1
+        #
+        TextInput:
+            id: confirmSenha_cad
+            size_hint: None, None
+            size: 250, 40
+            halign: 'left'
+            pos_hint: {'x':.55, 'y':.13}
+            color: 0, 0, 0, 1
+        #
+        Label:
+            id: confirmSenha_cad_error
+            text: ""
+            font_size: 15
+            halign: 'left'
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x':.55, 'y':.10}
+            color: 0.5, 0, 0, 1
+        #
+        Label:
+            id: verificacao_cad_error
+            text: ""
+            bold: True
+            valign: 'center'
+            font_size: 22
+            pos_hint: {'center_x': 0.5, 'center_y': 0.05}
+            color: 0, 0.8, 0, 1
+        #
+        BoxLayout:
+            orientation: "vertical"
+            size_hint: None, None
+            size: self.minimum_size
+            pos_hint: {'center_x': 0.9, 'center_y': 0.1}
+            spacing: 15
+            #
+            Button:
+                text: "Voltar ao login"
+                size_hint: None, None
+                size: 200, 50
+                font_size: 18
+                background_color: 0.5, 0.5, 0.5, 1
+                on_press: root.manager.transition.direction = 'left'
+                on_release: app.root.current = 'login'
+            #
+            Button:
+                text: "Realizar Cadastro"
+                size_hint: None, None
+                size: 200, 50
+                font_size: 18
+                background_color: 0.2, 0.8, 0.2, 1
+                on_release: root.informacoes_de_cadastro(nome_cad.text, cpf_cad.text, ddd_cad.text, numero_cad.text, email_cad.text, data_cad.text, cep_cad.text, rua_cad.text, Ncasa_cad.text, senha_cad.text, confirmSenha_cad.text)
+#
+<Screen_Menu>:
+    name: "menu"
+    FloatLayout:
+        canvas.before:
+            Color:
+                rgba: 0.8, 0.8, 0.8, 1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        #
+        Widget:
+            canvas.before:
+                Color:
+                    rgba: 0.4, 0.9, 1, 1
+                Rectangle:
+                    pos: 0, self.height - 160
+                    size: 1280, 160
+        #
+        Widget:
+            canvas.before:
+                Color:
+                    rgba: 0.3, 0.3, 0.3, 1
+                Line:
+                    points: [0, self.height - 160, 1280, self.height - 160]
+                    width: 1.7
+        #
+        Widget:
+            canvas.before:
+                Color:
+                    rgba: 0.9, 0.9, 0.9, 1
+                Rectangle:
+                    pos: 0, 0
+                    size: 450, 720-161.3
+        #
+        Label:
+            text: "Py Bank"
+            font_size: 50
+            pos_hint: {'center_x':.5, 'center_y':.89}
+            size_hint: None, None
+            bold: True
+            color: 1, 1, 1, 1
+            outline_width: 1
+            outline_color: 0.5, 0.5, 0.5, 1
+        #
+        Label:
+            text: "Consultar:"
+            font_size: 25
+            pos_hint: {'center_x':.5, 'center_y':.7}
+            size_hint: None, None
+            bold: True
+            color: 0, 0, 0, 1
+        #
+        Button:
+            text: "Extrato"
+            size_hint: None, None
+            size: 200, 50
+            font_size: 18
+            pos_hint: {'center_x':.5, 'center_y':.6}
+            background_color: 0.2, 0.8, 0.2, 1
+            on_release: root.manager.transition.direction = 'left'
+            on_press: app.root.current = 'extrato'
+        #
+        Button:
+            text: "Perfil"
+            size_hint: None, None
+            size: 200, 50
+            font_size: 18
+            pos_hint: {'center_x':.5, 'center_y':.5}
+            background_color: 0.2, 0.8, 0.2, 1
+            on_release: root.manager.transition.direction = 'left'
+            on_press: app.root.current = 'perfil'
+        #
+        Label:
+            text: "Realizar:"
+            font_size: 25
+            pos_hint: {'center_x':.7, 'center_y':.7}
+            size_hint: None, None
+            bold: True
+            color: 0, 0, 0, 1
+        #
+        Button:
+            text: "Saque"
+            size_hint: None, None
+            size: 200, 50
+            font_size: 18
+            pos_hint: {'center_x':.7, 'center_y':.6}
+            background_color: 0.2, 0.8, 0.2, 1
+            on_release: root.manager.transition.direction = 'left'
+            on_press: app.root.current = 'saque'
+        #
+        Button:
+            text: "Depósito"
+            size_hint: None, None
+            size: 200, 50
+            font_size: 18
+            pos_hint: {'center_x':.7, 'center_y':.5}
+            background_color: 0.2, 0.8, 0.2, 1
+            on_release: root.manager.transition.direction = 'left'
+            on_press: app.root.current = 'deposito'
+        #
+        Label:
+            text: "Perfil"
+            font_size: 30
+            halign: "left"
+            pos_hint: {'x': 0.14, 'y': 0.65}
+            size_hint: None, None
+            color: 0, 0, 0, 1
+            bold: True
+        #
+        Label:
+            id: nome_menu
+            text: "Nome: caio"
+            font_size: 25
+            halign: 'left'
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.02, 'y': 0.63}
+            color: 0, 0, 0, 1
+        #
+        Label:
+            id: cpf_menu
+            text: "CPF: 12345678901"
+            font_size: 25
+            halign: 'left'
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.02, 'y': 0.57}
+            color: 0, 0, 0, 1
+    #
+        Label:
+            id: numero_menu
+            text: "Numero: 12345678901"
+            font_size: 25
+            halign: 'left'
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.02, 'y': 0.51}
+            color: 0, 0, 0, 1
+        #
+        Label:
+            id: email_menu
+            text: "Email: <EMAIL>"
+            font_size: 25
+            halign: 'left'
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.02, 'y': 0.45}
+            color: 0, 0, 0, 1
+        #
+        Label:
+            id: cep_menu
+            text: "CEP: 12345678901"
+            font_size: 25
+            halign: 'left'
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.02, 'y': 0.39}
+            color: 0, 0, 0, 1
+        #
+        Label:
+            id: rua_menu
+            text: "Rua: 1234567890100 00000000 00000 n: 50"
+            font_size: 25
+            text_size: self.size
+            halign: "left"
+            size_hint: None, None
+            size: 400, 60
+            pos_hint: {'x': 0.02, 'y': 0.29}
+            color: 0, 0, 0, 1
+        #
+        Label:
+            id: data_menu
+            text: "Data de Nascimento: 12/12/1234"
+            font_size: 25
+            halign: "left"
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.02, 'y': 0.23}
+            color: 0, 0, 0, 1
+        #
+        Button:
+            text: "Sair"
+            size_hint: None, None
+            size: 160, 50
+            font_size: 18
+            pos_hint: {'center_x':.1, 'center_y':.15}
+            background_color: 0.5, 0, 0, 1
+            on_press: app.root.current = 'login'
+        #
+        Button:
+            text: "Fechar Sistema"
+            size_hint: None, None
+            size: 160, 50
+            font_size: 18
+            pos_hint: {'center_x':.1, 'center_y':.05}
+            background_color: 0.5, 0, 0, 1
+            on_press: app.stop()
+#
+<Screen_Perfil>:
+    name: "perfil"
+    FloatLayout:
+        canvas.before:
+            Color:
+                rgba: 0.8, 0.8, 0.8, 1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        #
+        Widget:
+            canvas.before:
+                Color:
+                    rgba: 0.4, 0.9, 1, 1
+                Rectangle:
+                    pos: 0, self.height - 160
+                    size: 1280, 160
+        #
+        Widget:
+            canvas.before:
+                Color:
+                    rgba: 0.3, 0.3, 0.3, 1
+                Line:
+                    points: [0, self.height - 160, 1280, self.height - 160]
+                    width: 1.7
+        #
+        Label:
+            text: "Py Bank"
+            font_size: 50
+            pos_hint: {'center_x':.5, 'center_y':.89}
+            size_hint: None, None
+            bold: True
+            color: 1, 1, 1, 1
+            outline_width: 1
+            outline_color: 0.5, 0.5, 0.5, 1
+#
+<Screen_Extrato>:
+    name: "extrato"
+    FloatLayout:
+        canvas.before:
+            Color:
+                rgba: 0.8, 0.8, 0.8, 1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        #
+        Widget:
+            canvas.before:
+                Color:
+                    rgba: 0.4, 0.9, 1, 1
+                Rectangle:
+                    pos: 0, self.height - 160
+                    size: 1280, 160
+        #
+        Widget:
+            canvas.before:
+                Color:
+                    rgba: 0.3, 0.3, 0.3, 1
+                Line:
+                    points: [0, self.height - 160, 1280, self.height - 160]
+                    width: 1.7
+        #
+        Label:
+            text: "Py Bank"
+            font_size: 50
+            pos_hint: {'center_x':.5, 'center_y':.89}
+            size_hint: None, None
+            bold: True
+            color: 1, 1, 1, 1
+            outline_width: 1
+            outline_color: 0.5, 0.5, 0.5, 1
+#
+<Screen_Saque>:
+    name: "saque"
+    FloatLayout:
+        canvas.before:
+            Color:
+                rgba: 0.8, 0.8, 0.8, 1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        #
+        Widget:
+            canvas.before:
+                Color:
+                    rgba: 0.4, 0.9, 1, 1
+                Rectangle:
+                    pos: 0, self.height - 160
+                    size: 1280, 160
+        #
+        Widget:
+            canvas.before:
+                Color:
+                    rgba: 0.3, 0.3, 0.3, 1
+                Line:
+                    points: [0, self.height - 160, 1280, self.height - 160]
+                    width: 1.7
+        #
+        Label:
+            text: "Py Bank"
+            font_size: 50
+            pos_hint: {'center_x':.5, 'center_y':.89}
+            size_hint: None, None
+            bold: True
+            color: 1, 1, 1, 1
+            outline_width: 1
+            outline_color: 0.5, 0.5, 0.5, 1
+#
+<Screen_Deposito>:
+    name: "deposito"
+    FloatLayout:
+        canvas.before:
+            Color:
+                rgba: 0.8, 0.8, 0.8, 1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        #
+        Widget:
+            canvas.before:
+                Color:
+                    rgba: 0.4, 0.9, 1, 1
+                Rectangle:
+                    pos: 0, self.height - 160
+                    size: 1280, 160
+        #
+        Widget:
+            canvas.before:
+                Color:
+                    rgba: 0.3, 0.3, 0.3, 1
+                Line:
+                    points: [0, self.height - 160, 1280, self.height - 160]
+                    width: 1.7
+        #
+        Label:
+            text: "Py Bank"
+            font_size: 50
+            pos_hint: {'center_x':.5, 'center_y':.89}
+            size_hint: None, None
+            bold: True
+            color: 1, 1, 1, 1
+            outline_width: 1
+            outline_color: 0.5, 0.5, 0.5, 1
+#
