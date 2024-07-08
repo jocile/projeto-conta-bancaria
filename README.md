@@ -1,7 +1,7 @@
 # Projeto Conta Bancaria
 ---
 
-**Caio:** desenvolvedor front-end     
+**Caio:** desenvolvedor front-end  
 **Alisson:** Líder de equipe 
 **Pedro:** Desenvolvedor Back-end  
 **Gabriel:** Desenvolvedor Back-end  
