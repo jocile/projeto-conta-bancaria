@@ -1,8 +1,8 @@
 # Projeto Conta Bancaria
 ---
 
-**Caio:** Lider  
-**Alisson:** Desenvolvedor Front-end  
+**Caio:** desenvolvedor front-end 
+**Alisson:** Líder de equipe 
 **Pedro:** Desenvolvedor Back-end  
 **Gabriel:** Desenvolvedor Back-end  
 **Natanael:** Desenvolvedor SQLite  
@@ -20,11 +20,3 @@ O projeto foi desenvolvido usando os seguintes assuntos abordados em sala:
 2. POO (Programação Orientada a Objetos)
 3. Banco de dados
 4. Interface gráfica
-
----
-
-## Fluxograma do sistema:
---> fluxograma a ser feito <--
-
-## Diagrama do banco de dados:
---> diagrama a ser feito <--
