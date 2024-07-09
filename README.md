@@ -20,3 +20,5 @@ O projeto foi desenvolvido usando os seguintes assuntos abordados em sala:
 2. POO (Programação Orientada a Objetos)
 3. Banco de dados
 4. Interface gráfica
+
+![requisitos](Requisitos-do-projeto.md)
