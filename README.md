@@ -10,7 +10,7 @@
 
 ---
 
-## Descrição do Projeto:  
+# Descrição do Projeto:  
 Projeto integrador do curso *programador de sistemas* - SENAC
 O projeto tem intuito desenvolver um software de sistema bancário.
 O sistema é dividido em 2 partes:
@@ -20,7 +20,7 @@ O sistema é dividido em 2 partes:
 ---
 
 
-## Fluxograma do projeto:
+# Fluxograma do projeto:
 ![fluxograma](https://github.com/osmozeInc/projeto-conta-bancaria/assets/120123623/07aa3120-c0c0-4a9e-a287-0f39e69a8619)
 
 O sistema deve ter 4 divisões:
@@ -30,54 +30,22 @@ O sistema deve ter 4 divisões:
 4. Interface
 ---
 
-## A classe conta deve ter:
+# A classe conta deve ter:
 1. variavel privada 
 2. saldo
 3. nome do usuário
 ---
 
 
-## A classe Cliente deve fazer
-cadastro:
-receber nome, cpf, numero, email e idade do usuário e senha
-chamar a função do banco de dados e enviar os dados
-
-
-login:
-receber cpf e senha
-chamar a função para verificar os dados no banco de dados
-
-
-depósito:
-receber valor do depósito,
-verifica se o valor é valido e retorna nada, ou uma mensagem de erro para a tela
-o depósito chama a função de alterar o saldo
-o depósito chama a função de adicionar algo ao hitórico
-
-
-saque:
-receber valor do saque,
-verifica se o valor é valido e retorna nada se for válido, ou uma mensagem de erro para a tela caso não seja
-o saque chama a função de alterar o saldo
-o saque chama a função de adicionar algo ao hitórico
-
-
-extrato:
-chama a função que retorna os dados de cada transação
-envia os dados para a tela
-
-
-
-
-função para pegar nome do usuário no banco de dados
-funçâo para alterar o valor do saldo e registrar mudança no banco de dados
+# A classe Cliente deve fazer:
+1. cadastro (receber nome, cpf, numero, email e idade do usuário e senha
+chamar a função do banco de dados e enviar os dados).
 
 ---
 
-## A classe banco de dados deve fazer:
-cadastro:
-criar tabela e guardar nome, cpf, numero, email e idade do usuário e senha
-cria uma tabela para o extrato do usuário
+# A classe banco de dados deve fazer:
+Cadastro (criar tabela e guardar nome, cpf, numero, email e idade do usuário e senha
+cria uma tabela para o extrato do usuário)
 
 
 login:
@@ -98,15 +66,41 @@ adicionar a operação realizada na tabela do extarto
 extrato:
 retorna todos as operações da tabela extrato
 
+# A Interface deve ter a opção de:
 
-## A Interface deve ter a opção de:
+## Login:
+ Receber cpf e senha
+ Chamar a função para verificar os dados no banco de dados
 
-criar usuário ou fazer login e enviar ou pesquisar as informações no banco de dados
-mostrar menu com opções de saque, depósito e mostrar o extrato
-Receber dados do depósito e mandar para a classe cliente
-Receber dados do saque e mandar para a classe cliente
-Receber informações do histórico e mostrar o extrato
 
-## Diagrama de casos de uso
+## Depósito:
+Receber valor do depósito,
+verifica se o valor é valido e retorna nada, ou uma mensagem de erro para a tela
+o depósito chama a função de alterar o saldo
+o depósito chama a função de adicionar algo ao hitórico
+
+
+## Saque:
+receber valor do saque,
+verifica se o valor é valido e retorna nada se for válido, ou uma mensagem de erro para a tela caso não seja
+o saque chama a função de alterar o saldo
+o saque chama a função de adicionar algo ao hitórico
+
+
+## Extrato:
+chama a função que retorna os dados de cada transação
+envia os dados para a tela
+
+
+
+
+função para pegar nome do usuário no banco de dados
+funçâo para alterar o valor do saldo e registrar mudança no banco de dados
+
+---
+
+
+
+# Diagrama de casos de uso
 
 ![diagrama](https://github.com/osmozeInc/projeto-conta-bancaria/assets/168863507/32c839cd-bf58-4b70-9445-b0c094c480b0)
