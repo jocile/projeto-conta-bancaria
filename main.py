@@ -1,4 +1,4 @@
-
+import sqlite3 
 class Interface:
     pass
 #1. criar usuário ou fazer login e enviar ou pesquisar as informações no banco de dados
@@ -60,8 +60,8 @@ class Banco_de_dados:
 
     def extrato(self):
         pass
-        import sqlite3
-from sqlite3 import Error
+
+
 
 def connect_db():
     try:
