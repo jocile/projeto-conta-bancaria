@@ -96,3 +96,4 @@ retorna todos as operações da tabela extrato
 <br>
 
 ## Fluxograma de casos de uso:
+![Fluxograma](https://github.com/osmozeInc/projeto-conta-bancaria/assets/168863507/32c839cd-bf58-4b70-9445-b0c094c480b0)
