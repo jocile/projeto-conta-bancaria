@@ -31,9 +31,9 @@ O sistema deve ter 4 divisões:
 ---
 
 ## A classe conta deve ter:
-variavel privada 
-saldo
-nome do usuário
+1. variavel privada 
+2. saldo
+3. nome do usuário
 ---
 
 
@@ -106,3 +106,7 @@ mostrar menu com opções de saque, depósito e mostrar o extrato
 Receber dados do depósito e mandar para a classe cliente
 Receber dados do saque e mandar para a classe cliente
 Receber informações do histórico e mostrar o extrato
+
+## Diagrama de casos de uso
+
+![diagrama](https://github.com/osmozeInc/projeto-conta-bancaria/assets/168863507/32c839cd-bf58-4b70-9445-b0c094c480b0)
