@@ -30,15 +30,14 @@ O sistema deve ter 4 divisões:
 4. Interface
 ---
 
-A Interface deve ter a opção de:
-criar usuário ou fazer login e enviar ou pesquisar as informações no banco de dados
-mostrar menu com opções de saque, depósito e mostrar o extrato
-Receber dados do depósito e mandar para a classe cliente
-Receber dados do saque e mandar para a classe cliente
-Receber informações do histórico e mostrar o extrato
+## A classe conta deve ter:
+variavel privada 
+saldo
+nome do usuário
+---
 
 
-A classe Cliente deve fazer
+## A classe Cliente deve fazer
 cadastro:
 receber nome, cpf, numero, email e idade do usuário e senha
 chamar a função do banco de dados e enviar os dados
@@ -69,17 +68,13 @@ envia os dados para a tela
 
 
 
-A classe conta deve ter:
-variavel privada saldo
-nome do usuário
-
 
 função para pegar nome do usuário no banco de dados
 funçâo para alterar o valor do saldo e registrar mudança no banco de dados
 
+---
 
-
-A classe banco de dados deve fazer:
+## A classe banco de dados deve fazer:
 cadastro:
 criar tabela e guardar nome, cpf, numero, email e idade do usuário e senha
 cria uma tabela para o extrato do usuário
@@ -102,3 +97,12 @@ adicionar a operação realizada na tabela do extarto
 
 extrato:
 retorna todos as operações da tabela extrato
+
+
+## A Interface deve ter a opção de:
+
+criar usuário ou fazer login e enviar ou pesquisar as informações no banco de dados
+mostrar menu com opções de saque, depósito e mostrar o extrato
+Receber dados do depósito e mandar para a classe cliente
+Receber dados do saque e mandar para a classe cliente
+Receber informações do histórico e mostrar o extrato
