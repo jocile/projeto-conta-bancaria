@@ -24,10 +24,10 @@ O sistema é dividido em 2 partes:
 ![fluxograma](https://github.com/osmozeInc/projeto-conta-bancaria/assets/120123623/07aa3120-c0c0-4a9e-a287-0f39e69a8619)
 
 O sistema deve ter 4 divisões:
-1 - Conta
-2 - Cliente
-3 - Banco de dados
-4 - Interface
+1. Conta
+2. Cliente
+3. Banco de dados
+4. Interface
 ---
 
 A Interface deve ter a opção de:
