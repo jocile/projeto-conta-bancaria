@@ -1,12 +1,12 @@
 # Projeto Conta Bancaria
 ---
 
-**Caio:** desenvolvedor front-end e Data Base 
-**Alisson:** Líder de equipe 
-**Pedro:** Desenvolvedor Back-end  
-**Gabriel:** Desenvolvedor Back-end  
-**Natanael:** Desenvolvedor Data Base 
-**Silas:** desenvolvedor back-end
+1. **Caio:** desenvolvedor front-end e Data Base 
+2. **Alisson:** Líder de equipe 
+3. **Pedro:** Desenvolvedor Back-end  
+4. **Gabriel:** Desenvolvedor Back-end  
+5. **Natanael:** Desenvolvedor Data Base 
+6. **Silas:** desenvolvedor back-end
 
 ---
 
@@ -23,7 +23,7 @@ O sistema é dividido em 2 partes:
 # Fluxograma do projeto:
 ![fluxograma](https://github.com/osmozeInc/projeto-conta-bancaria/assets/120123623/07aa3120-c0c0-4a9e-a287-0f39e69a8619)
 
-O sistema deve ter 4 divisões:
+## O sistema deve ter 4 divisões:
 1. Conta
 2. Cliente
 3. Banco de dados
