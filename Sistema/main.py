@@ -102,7 +102,7 @@ class Screen_Menu(Screen):
         self.ids.numero_menu.text = f"Número: ({cliente['ddd']}) {cliente['numero'][:5]}-{cliente['numero'][5:]}"
         self.ids.email_menu.text = f"E-mail: {cliente['email']}"
         self.ids.data_menu.text = f"Data de nascimento: {cliente['data'][:2]}/{cliente['data'][2:4]}/{cliente['data'][4:]}"
-        self.ids.cep_menu.text = f"CEP: {cliente['CEP'][:5]}{cliente['CEP'][5:]}"
+        self.ids.cep_menu.text = f"CEP: {cliente['CEP'][:5]}-{cliente['CEP'][5:]}"
         self.ids.rua_menu.text = f"{cliente['rua']}"
         self.ids.casa_menu.text = f"Número da casa: {cliente['Ncasa']}"
         self.ids.saldo_menu.text = f"Saldo: R$ {cliente['saldo']:.2f}"
@@ -123,7 +123,7 @@ class Screen_Deposito(Screen):
         else:
             cliente['saldo'] += float(valor)
             banco_de_dados.Deposito(cliente['cpf'], cliente['saldo'])
-            banco_de_dados.Adicionar_transacao(cliente['cpf'], 'Depósito', valor)
+            banco_de_dados.Adicionar_Opreracao(cliente['cpf'], 'Depósito', valor)
             self.ids.deposito_error.text = ''
             self.manager.current = 'menu'
 
@@ -145,15 +145,20 @@ class Screen_Saque(Screen):
         else:
             cliente['saldo'] -= float(valor)
             banco_de_dados.Saque(cliente['cpf'], cliente['saldo'])
-            banco_de_dados.Adicionar_transacao(cliente['cpf'], 'Saque', valor)
+            banco_de_dados.Adicionar_Opreracao(cliente['cpf'], 'Saque', valor)
             self.ids.saque_error.text = ''
             self.ids.saque.text = ''
             self.manager.current = 'menu'
 
 
 class Screen_Extrato(Screen):
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+    def on_enter(self, *args):
+        extrato = banco_de_dados.Extrato(cliente['cpf'])
+        Texto_do_Extrato = "Histórico de transações:"
+        for i in range(len(extrato)):
+            Texto_do_Extrato = Texto_do_Extrato + f"\n\n{i+1}. {extrato[i][0]} de R$ {extrato[i][1]:.2f} Realizado!"
+        
+        self.ids.extrato.text = Texto_do_Extrato
 
 
 class Screen_Perfil(Screen):

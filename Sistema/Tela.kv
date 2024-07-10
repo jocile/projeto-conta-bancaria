@@ -531,7 +531,7 @@ ScreenManager:
                 font_size: 18
                 background_color: 0.1, 1, 0.1, 1
                 on_release: root.manager.transition.direction = 'right'
-                on_press: app.root.current ='saque'
+                on_press: app.root.current ='extrato'
         #
         Label:
             text: "Perfil"
@@ -1018,6 +1018,38 @@ ScreenManager:
             color: 1, 1, 1, 1
             outline_width: 1
             outline_color: 0.5, 0.5, 0.5, 1
+        #
+        Label:
+            text: "Extrato"
+            font_size: 30
+            halign: "center"
+            pos_hint: {'center_x': 0.5, 'y': 0.65}
+            size_hint: None, None
+            color: 0, 0, 0, 1
+            bold: True
+        #
+        ScrollView:
+            size_hint: (0.9, 0.7)
+            pos_hint: {'center_x': 0.5, 'center_y': 0.4}
+            #
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y: None
+                height: self.minimum_height
+                padding: 10
+                spacing: 10
+                #
+                Label:
+                    id: extrato
+                    text: "Aqui vai o texto do extrato\ntexto do extrato"
+                    font_size: 18
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    halign: 'left'
+                    valign: 'top'
+                    text_size: self.width, None
+                    color: 0, 0, 0, 1
+
 #
 <Screen_Saque>:
     name: "saque"

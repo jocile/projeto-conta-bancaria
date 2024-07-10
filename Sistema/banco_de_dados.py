@@ -23,11 +23,11 @@ cursor.execute( '''
     ''')
 
 
-cursor.execute( '''
+cursor.execute('''
 CREATE TABLE IF NOT EXISTS extrato 
     (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    cliente_id INTEGER
+    cliente_id INTEGER,
     tipo TEXT,
     valor REAL,
     FOREIGN KEY(cliente_id) REFERENCES cliente(id)
@@ -85,13 +85,27 @@ def Deposito(cpf, saldo):
     cursor.execute("UPDATE cliente SET saldo = ? WHERE cpf = ?", (saldo, cpf))
 
 
-def Extrato(cpf, tipo, valor):
+def Adicionar_Opreracao(cpf, tipo, valor):
     cursor.execute("SELECT id FROM cliente WHERE cpf = ?", (cpf,))
     result = cursor.fetchone()
+
     if result:
         id = result[0]
         cursor.execute("INSERT INTO extrato (cliente_id, tipo, valor) VALUES (?,?,?)", (id, tipo, valor))
         conexao.commit()
+    else:
+        return False
+    
+
+def Extrato(cpf):
+    cursor.execute("SELECT id FROM cliente WHERE cpf = ?", (cpf,))
+    result = cursor.fetchone()
+
+    if result:
+        id = result[0]
+        cursor.execute("SELECT tipo, valor FROM extrato WHERE cliente_id =?", (id,))
+        extrato = cursor.fetchall()
+        return extrato
     else:
         return False
 
