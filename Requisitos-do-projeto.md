@@ -94,3 +94,9 @@ adicionar a operação realizada na tabela do extarto
 retorna todos as operações da tabela extrato  
 <br>
 <br>
+
+## Fluxograma
+![fluxograma do projeto](https://github.com/Clickylightiano/Cadastro-de-Alunos-0.5/blob/main/Diagrama%20cadstro%20bancario.png?raw=true)
+
+## Diagrama de casos de uso:
+![Fluxograma](https://github.com/osmozeInc/projeto-conta-bancaria/assets/168863507/32c839cd-bf58-4b70-9445-b0c094c480b0)
